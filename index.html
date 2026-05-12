@@ -12,232 +12,279 @@
     
     <style>
         :root {
-            /* Stitch UI Palette from modbm/apps/ops-portal/app/globals.css */
-            --bg-primary: #F2F4F6;
-            --bg-secondary: #E9ECEF;
+            /* Updated Palette: Moving away from neutral grey to brand-tinted tones */
+            --bg-primary: #FFFFFF;
+            --bg-vibrant: #f0f9f8; /* Very light teal tint instead of grey */
+            --bg-secondary: #e6f2f1;
             --bg-card: #FFFFFF;
             --text-primary: #041627;
-            --text-secondary: #44474C;
+            --text-secondary: #2d3a4b;
             --text-muted: #5d6f82;
-            --border: rgba(196, 198, 205, 0.4);
+            --border: rgba(0, 107, 92, 0.1); /* Tinted border */
             --accent: #006b5c;
             --accent-hover: #005145;
+            --accent-soft: #e0f2f1;
             --brand-navy: #041627;
         }
 
         body {
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            font-family: 'Inter', sans-serif; /* Standard body font */
+            font-family: 'Inter', sans-serif;
         }
 
         h1, h2, h3, h4, .font-manrope {
-            font-family: 'Manrope', sans-serif; /* Standard heading font */
+            font-family: 'Manrope', sans-serif;
             color: var(--brand-navy);
         }
 
-        .text-muted { color: var(--text-muted); }
-        .text-accent { color: var(--accent); }
-        .bg-accent { background-color: var(--accent); }
-        .border-brand { border-color: var(--border); }
+        /* Subtle Background Glows */
+        .glow-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 107, 92, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .btn-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 107, 92, 0.2);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="bg-white border-b border-[var(--border)] sticky top-0 z-50">
+    <nav class="bg-white/80 backdrop-blur-md border-b border-[var(--border)] font-semibold sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="flex items-center justify-center w-7 h-7 rounded border-2 border-[var(--accent)] text-[var(--accent)] font-extrabold text-lg" style="font-family: 'Manrope', sans-serif;">
+                <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--accent)] text-white font-extrabold text-lg shadow-sm">
                     H
                 </div>
-                <div class="text-xl font-bold tracking-tight text-[var(--text-primary)]" style="font-family: 'Manrope', sans-serif;">
+                <div class="text-xl font-bold tracking-tight text-[var(--brand-navy)]">
                     herobm
                 </div>
             </div>
             
-            <div class="hidden md:flex space-x-8 items-center font-semibold text-sm text-[var(--text-secondary)]">
+            <div class="hidden md:flex space-x-8 items-center text-sm text-[var(--text-secondary)]">
                 <a href="#why" class="hover:text-[var(--accent)] transition-colors">Why Us</a>
                 <a href="#approach" class="hover:text-[var(--accent)] transition-colors">The Model</a>
                 <a href="#features" class="hover:text-[var(--accent)] transition-colors">Modules</a>
-                <a href="#contact" class="bg-[var(--accent)] text-white px-4 py-2 rounded-lg hover:bg-[var(--accent-hover)] transition-all">Contact Us</a>
+                <a href="#contact" class="bg-[var(--accent)] text-white px-5 py-2.5 rounded-full hover:bg-[var(--accent-hover)] transition-all btn-shadow">Contact Us</a>
             </div>
         </div>
     </nav>
 
-    <header class="py-24 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-                Your Business. <span class="text-[var(--accent)]">Your Data.</span>
+    <header class="relative py-28 px-6 overflow-hidden">
+        <div class="glow-bg -top-20 -right-20"></div>
+        <div class="glow-bg -bottom-20 -left-20"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wide uppercase text-[var(--accent)] bg-[var(--accent-soft)] rounded-full">
+                Next-Gen Business Infrastructure
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-[1.1] tracking-tight">
+                Your Business. <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-[#00a896]">Your Data.</span>
             </h1>
-            <p class="text-xl text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto leading-relaxed">
-                The software you run your business on needs to fit like a glove, but grow as you grow. <strong>HeroBM</strong> gives you core business software ("ERP") that grows with you.
+            <p class="text-xl text-[var(--text-secondary)] mb-12 max-w-2xl mx-auto leading-relaxed">
+                Stop forcing your business into rigid boxes. <strong>HeroBM</strong> provides the core engine that adapts to your unique workflow, giving you total technical freedom.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" class="bg-[var(--brand-navy)] text-white px-8 py-4 rounded-xl text-lg font-bold hover:opacity-90 transition shadow-sm">Get a Custom Demo</a>
-                <a href="#features" class="bg-white border border-[var(--border)] text-[var(--text-primary)] px-8 py-4 rounded-xl text-lg font-bold hover:bg-[var(--bg-secondary)] transition">Explore Modules</a>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#contact" class="bg-[var(--brand-navy)] text-white px-10 py-4 rounded-full text-lg font-bold hover:translate-y-[-2px] transition shadow-lg">Get a Custom Demo</a>
+                <a href="#features" class="bg-white border-2 border-[var(--border)] text-[var(--brand-navy)] px-10 py-4 rounded-full text-lg font-bold hover:bg-[var(--bg-vibrant)] transition">Explore Modules</a>
             </div>
         </div>
     </header>
 
-    <section id="why" class="py-20 bg-[var(--bg-secondary)] px-6">
+    <section id="why" class="py-24 bg-[var(--bg-vibrant)] px-6 relative">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">A new model for business management software</h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-white p-8 rounded-2xl border border-[var(--border)] shadow-sm">
-                    <i class="fa-solid fa-display text-[var(--accent)] text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">Modern UI</h3>
-                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Browser-based workflows with no surprises.</p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">A Dynamic Foundation</h2>
+                <p class="text-[var(--text-muted)]">Everything you need to scale without the legacy friction.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass-card p-8 rounded-3xl hover:translate-y-[-5px] transition-all duration-300">
+                    <div class="w-12 h-12 bg-[var(--accent-soft)] rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-display text-[var(--accent)] text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Modern UI</h3>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Intuitive, high-performance interfaces designed for modern browsers.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-[var(--border)] shadow-sm">
-                    <i class="fa-solid fa-plug text-[var(--accent)] text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">Open APIs</h3>
-                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Integrate with all the systems you depend on.</p>
+                <div class="glass-card p-8 rounded-3xl hover:translate-y-[-5px] transition-all duration-300">
+                    <div class="w-12 h-12 bg-[var(--accent-soft)] rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-plug text-[var(--accent)] text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Open APIs</h3>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Connect seamlessly with your existing tech stack and third-party tools.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-[var(--border)] shadow-sm">
-                    <i class="fa-solid fa-database text-[var(--accent)] text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">Full DB access</h3>
-                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">You have full control of your data - no lock-in.</p>
+                <div class="glass-card p-8 rounded-3xl hover:translate-y-[-5px] transition-all duration-300">
+                    <div class="w-12 h-12 bg-[var(--accent-soft)] rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-database text-[var(--accent)] text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Full DB access</h3>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">It's your data. Access the raw database whenever you need to.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-[var(--border)] shadow-sm">
-                    <i class="fa-solid fa-terminal text-[var(--accent)] text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">Full code access</h3>
-                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Build the extensions that you need, now.</p>
+                <div class="glass-card p-8 rounded-3xl hover:translate-y-[-5px] transition-all duration-300">
+                    <div class="w-12 h-12 bg-[var(--accent-soft)] rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-terminal text-[var(--accent)] text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Full code access</h3>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">Build, extend, and customize. You own the logic that runs your business.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="approach" class="py-24 px-6 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2">
-                    <h2 class="text-4xl font-extrabold mb-6 tracking-tight">The "Electrician" Model</h2>
-                    <p class="text-lg text-[var(--text-secondary)] mb-8 leading-relaxed">
-                        We don’t sell a rigid product. We "wire" your business based on proven codes, and then we adapt the installation to you.
+    <section id="approach" class="py-28 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-extrabold mb-8 tracking-tight leading-tight">The "Electrician" Model:<br/><span class="text-[var(--accent)]">Built to Code, Wired for You.</span></h2>
+                    <p class="text-lg text-[var(--text-secondary)] mb-10 leading-relaxed">
+                        Generic ERPs are like pre-fab sheds. We offer a custom-wired installation based on proven architectural standards.
                     </p>
-                    <div class="space-y-6">
-                        <div class="flex gap-5">
-                            <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-primary)] text-[var(--accent)] rounded-full flex items-center justify-center font-bold border border-[var(--border)]">1</div>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-[var(--brand-navy)] text-white rounded-2xl flex items-center justify-center font-bold shadow-lg">1</div>
                             <div>
-                                <h4 class="font-bold text-lg">The Stable Foundation</h4>
-                                <p class="text-[var(--text-muted)]">We deliver a secure database and polished UI framework with standard business workflows.</p>
+                                <h4 class="font-bold text-xl mb-1">The Stable Foundation</h4>
+                                <p class="text-[var(--text-muted)]">A robust PostgreSQL core and React-based UI framework that handles the heavy lifting.</p>
                             </div>
                         </div>
-                        <div class="flex gap-5">
-                            <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-primary)] text-[var(--accent)] rounded-full flex items-center justify-center font-bold border border-[var(--border)]">2</div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-[var(--accent)] text-white rounded-2xl flex items-center justify-center font-bold shadow-lg">2</div>
                             <div>
-                                <h4 class="font-bold text-lg">Local or cloud hosting</h4>
-                                <p class="text-[var(--text-muted)]">We can host it for you, or you can host it yourself.</p>
+                                <h4 class="font-bold text-xl mb-1">Flexible Hosting</h4>
+                                <p class="text-[var(--text-muted)]">On-premise for high security, or cloud-hosted for maximum scalability. You choose.</p>
                             </div>
                         </div>
-                        <div class="flex gap-5">
-                            <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-primary)] text-[var(--accent)] rounded-full flex items-center justify-center font-bold border border-[var(--border)]">3</div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-[var(--accent)] text-white rounded-2xl flex items-center justify-center font-bold shadow-lg">3</div>
                             <div>
-                                <h4 class="font-bold text-lg">Code-level customisation</h4>
-                                <p class="text-[var(--text-muted)]">We can adapt it to your workflows, or you can with in-house or external IT.</p>
+                                <h4 class="font-bold text-xl mb-1">Deep Customisation</h4>
+                                <p class="text-[var(--text-muted)]">Don't change your business for your software. Change your software for your business.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 bg-[var(--accent)] h-80 rounded-[2rem] flex items-center justify-center text-white text-4xl italic font-serif shadow-xl relative overflow-hidden">
-                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
-                    <span class="relative z-10 text-center">Your Workflow, <br/>Our Wiring</span>
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-[var(--accent)] to-[#00a896] rounded-[3rem] blur-2xl opacity-20"></div>
+                    <div class="relative bg-[var(--brand-navy)] aspect-square lg:aspect-video rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-bold shadow-2xl overflow-hidden border border-white/10">
+                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+                        <div class="relative z-10 text-center p-12">
+                            <span class="block text-[var(--accent)] text-sm uppercase tracking-[0.3em] mb-4">Our Philosophy</span>
+                            <span class="italic font-serif">"Your Workflow, <br/>Our Wiring"</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="py-24 bg-[var(--brand-navy)] text-white px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-16 text-white">The herobm foundation</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
-                    <h3 class="text-xl font-bold mb-4 text-[var(--accent)]">OMS</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Order Management with complex pricing, multi-currency, and automated GST.</p>
-                    <ul class="text-xs space-y-3 text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Draft to Invoiced lifecycle</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Trade/List price tiers</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Automated tax resolution</li>
+    <section id="features" class="py-28 bg-[var(--brand-navy)] text-white px-6 overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[var(--accent)]/10 to-transparent"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h2 class="text-4xl font-bold text-center mb-20 text-white">The herobm Foundation</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:border-[var(--accent)]/50 transition-all group">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">OMS</h3>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed">Order Management with complex pricing, multi-currency, and automated GST.</p>
+                    <ul class="text-xs space-y-4 text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Invoiced lifecycle</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Trade/List price tiers</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Automated tax resolution</li>
                     </ul>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
-                    <h3 class="text-xl font-bold mb-4 text-[var(--accent)]">WMS</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Warehouse management treated like a financial ledger for perfect accuracy.</p>
-                    <ul class="text-xs space-y-3 text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Real-time stock views</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Bin-level tracking</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Immutable audit records</li>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:border-[var(--accent)]/50 transition-all group">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">WMS</h3>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed">Warehouse management treated like a financial ledger for perfect accuracy.</p>
+                    <ul class="text-xs space-y-4 text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Real-time stock views</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Bin-level tracking</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Immutable audit records</li>
                     </ul>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
-                    <h3 class="text-xl font-bold mb-4 text-[var(--accent)]">Procurement</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Streamlined PO lifecycle with sophisticated pricing fallback systems.</p>
-                    <ul class="text-xs space-y-3 text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Partial reception logging</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Cost automation</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Strict validation invariants</li>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:border-[var(--accent)]/50 transition-all group">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">Procurement</h3>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed">Streamlined PO lifecycle with sophisticated pricing fallback systems.</p>
+                    <ul class="text-xs space-y-4 text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Partial reception logging</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Cost automation</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Strict validation</li>
                     </ul>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors">
-                    <h3 class="text-xl font-bold mb-4 text-[var(--accent)]">General Ledger</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">A native GL enforcing strict double-entry accounting principles.</p>
-                    <ul class="text-xs space-y-3 text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Real-time Trial Balance</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Customizable Chart of Accounts</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div> Automated subledger posting</li>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:border-[var(--accent)]/50 transition-all group">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-[var(--accent)] transition-colors">General Ledger</h3>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed">A native GL enforcing strict double-entry accounting principles.</p>
+                    <ul class="text-xs space-y-4 text-slate-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Real-time Trial Balance</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Customizable Chart</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[var(--accent)]"></i> Subledger posting</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6">
-        <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-[2rem] overflow-hidden border border-[var(--border)]">
-            <div class="bg-[var(--accent)] p-8 text-white text-center">
-                <h2 class="text-2xl font-bold text-white">Total Business Freedom</h2>
+    <section class="py-28 px-6 bg-[var(--bg-vibrant)]">
+        <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-[3rem] overflow-hidden border border-[var(--border)]">
+            <div class="bg-gradient-to-r from-[var(--brand-navy)] to-[var(--accent)] p-10 text-white text-center">
+                <h2 class="text-3xl font-bold text-white mb-2">Total Business Freedom</h2>
+                <p class="text-white/70">The anti-vendor-lock-in guarantee.</p>
             </div>
             <table class="w-full text-left">
-                <tr class="border-b border-[var(--border)]">
-                    <th class="p-8 bg-[var(--bg-primary)] font-bold text-[var(--brand-navy)] w-1/3">Data Ownership</th>
+                <tr class="border-b border-[var(--bg-vibrant)]">
+                    <th class="p-8 bg-[var(--bg-vibrant)]/30 font-bold text-[var(--brand-navy)] w-1/3">Data Ownership</th>
                     <td class="p-8 text-[var(--text-secondary)]">Complete access to integrate or export as you see fit.</td>
                 </tr>
-                <tr class="border-b border-[var(--border)]">
-                    <th class="p-8 bg-[var(--bg-primary)] font-bold text-[var(--brand-navy)]">Code Access</th>
+                <tr class="border-b border-[var(--bg-vibrant)]">
+                    <th class="p-8 bg-[var(--bg-vibrant)]/30 font-bold text-[var(--brand-navy)]">Code Access</th>
                     <td class="p-8 text-[var(--text-secondary)]">Perpetual usage license for the source code of your apps.</td>
                 </tr>
-                <tr class="border-b border-[var(--border)]">
-                    <th class="p-8 bg-[var(--bg-primary)] font-bold text-[var(--brand-navy)]">Vendor Choice</th>
+                <tr class="border-b border-[var(--bg-vibrant)]">
+                    <th class="p-8 bg-[var(--bg-vibrant)]/30 font-bold text-[var(--brand-navy)]">Vendor Choice</th>
                     <td class="p-8 text-[var(--text-secondary)]">Internal IT, third parties, or us - you decide who builds.</td>
                 </tr>
                 <tr>
-                    <th class="p-8 bg-[var(--bg-primary)] font-bold text-[var(--brand-navy)]">Predictable Pricing</th>
-                    <td class="p-8 text-[var(--text-secondary)]">Stable annual licence fees and agreed day rates for customisation.</td>
+                    <th class="p-8 bg-[var(--bg-vibrant)]/30 font-bold text-[var(--brand-navy)]">Pricing</th>
+                    <td class="p-8 text-[var(--text-secondary)]">Predictable annual fees and agreed day rates for customisation.</td>
                 </tr>
             </table>
         </div>
     </section>
 
-    <footer id="contact" class="bg-[var(--bg-secondary)] py-24 px-6 border-t border-[var(--border)]">
-        <div class="max-w-xl mx-auto text-center">
-            <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Contact Our Team</h2>
-            <p class="text-[var(--text-muted)] mb-10 text-lg">Discuss how herobm can put you in control of your business.</p>
-            <div class="bg-white p-10 rounded-[2rem] shadow-sm border border-[var(--border)] text-left">
+    <footer id="contact" class="bg-gradient-to-b from-white to-[var(--bg-vibrant)] py-28 px-6 relative">
+        <div class="max-w-xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl font-extrabold mb-6 tracking-tight">Ready to wire up?</h2>
+            <p class="text-[var(--text-muted)] mb-12 text-lg">Let's discuss how herobm can fit your business like a glove.</p>
+            
+            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl border border-[var(--border)] text-left">
                 <div class="mb-6">
-                    <label class="block text-sm font-bold mb-2 text-[var(--brand-navy)] uppercase tracking-wider">Name</label>
-                    <input type="text" placeholder="Your Name" class="w-full p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl focus:ring-2 focus:ring-[var(--accent)] outline-none transition-all">
+                    <label class="block text-xs font-bold mb-3 text-[var(--accent)] uppercase tracking-[0.2em]">Full Name</label>
+                    <input type="text" placeholder="Your Name" class="w-full p-4 bg-[var(--bg-vibrant)] border-2 border-transparent focus:border-[var(--accent)] rounded-2xl outline-none transition-all placeholder:text-slate-400">
                 </div>
-                <div class="mb-8">
-                    <label class="block text-sm font-bold mb-2 text-[var(--brand-navy)] uppercase tracking-wider">Email</label>
-                    <input type="email" placeholder="email@company.com" class="w-full p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl focus:ring-2 focus:ring-[var(--accent)] outline-none transition-all">
+                <div class="mb-10">
+                    <label class="block text-xs font-bold mb-3 text-[var(--accent)] uppercase tracking-[0.2em]">Work Email</label>
+                    <input type="email" placeholder="email@company.com" class="w-full p-4 bg-[var(--bg-vibrant)] border-2 border-transparent focus:border-[var(--accent)] rounded-2xl outline-none transition-all placeholder:text-slate-400">
                 </div>
-                <button class="w-full bg-[var(--accent)] text-white font-bold py-4 rounded-xl hover:bg-[var(--accent-hover)] transition-all shadow-md text-lg">Send Message</button>
+                <button class="w-full bg-[var(--accent)] text-white font-bold py-5 rounded-2xl hover:bg-[var(--accent-hover)] transition-all shadow-xl text-lg hover:scale-[1.02] active:scale-[0.98]">
+                    Send Message
+                </button>
             </div>
-            <div class="mt-12 flex flex-col items-center gap-4">
-                <div class="flex items-center gap-2 opacity-50">
-                    <div class="flex items-center justify-center w-5 h-5 rounded border border-[var(--text-muted)] text-[var(--text-muted)] font-extrabold text-[10px]">H</div>
-                    <span class="text-sm font-bold tracking-tight text-[var(--text-muted)]">herobm</span>
+
+            <div class="mt-20 flex flex-col items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center justify-center w-6 h-6 rounded-md bg-[var(--accent)] text-white font-extrabold text-[10px]">H</div>
+                    <span class="text-lg font-bold tracking-tight text-[var(--brand-navy)]">herobm</span>
                 </div>
-                <p class="text-sm text-[var(--text-muted)]">Your Business, Your Data.</p>
+                <p class="text-sm text-[var(--text-muted)] font-medium">© 2024 herobm. All Rights Reserved. <br/> Your Business, Your Data.</p>
             </div>
         </div>
     </footer>
